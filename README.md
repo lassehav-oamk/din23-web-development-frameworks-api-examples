@@ -11,11 +11,9 @@ The `index.js` file sets up a basic Express server that listens on a specified p
 
 ## API endpoints available in the application
 
-- **GET /**: Returns a welcome message.
-- **GET /api/users**: Retrieves a list of all users.
-- **POST /api/users**: Creates a new user. Requires a JSON body with user details.
-- **GET /api/users/:id**: Retrieves details of a user by ID.
-- **PUT /api/users/:id**: Updates details of a user by ID. Requires a JSON body with updated user details.
+- **GET /users**: Retrieves a list of all users.
+- **POST /users**: Creates a new user. Requires a JSON body with user details.
+- **PUT /users/:id**: Updates details of a user by ID. Requires a JSON body with updated user details.
 - **DELETE /api/users/:id**: Deletes a user by ID.
 
 ## Getting Started
