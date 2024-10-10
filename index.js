@@ -1,18 +1,35 @@
 const express = require('express')
 const app = express()
+const cors = require('cors');
 const port = 3000
 
 app.use(express.json()) // for parsing application/json
+app.use(cors());
 
 // define user data to serve as a placeholder for real database
 let users = [
-  { id: 1, name: 'Alice' },
-  { id: 2, name: 'Bob' },
-  { id: 3, name: 'Charlie' },
+  { id: 1, name: 'Max' },
+  { id: 2, name: 'Josephine' },
+  { id: 3, name: 'Bob' },
+  { id: 4, name: 'Charlie' },
 ]
 
 
 app.get('/users', (req, res) => {
+
+  console.log('REQUEST to /users');
+
+  // check if the query parameter is present and that it is for the name
+  if(req.query.name) {
+    // get those users whose name include the value of the name query parameter
+    const filteredUsers = users.filter(user => user.name.toLowerCase().includes(req.query.name.toLowerCase()));
+
+    // return those users as a response to the request
+    res.json(filteredUsers);
+    return;
+  }
+
+  // if the query parameter is not present, then return all the users
   res.json(users)
 })
 
